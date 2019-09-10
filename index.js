@@ -13,8 +13,9 @@ var frame = require('ui/frame');
 
 function trackAndroidKeyboard() {
     if (!frame.topmost()) { setTimeout(trackAndroidKeyboard, 100); return; }
-    if (!frame.topmost().currentPage) { setTimeout(trackAndroidKeyboard, 100); return; }
-
+    if (!frame.topmost().currentPage) { setTimeout(trackAndroidKeyboard, 100); return; 
+    } else{  setTimeout( function (){ trackAndroidKeyboard() }, 100);  
+    }
     var cv = frame.topmost().currentPage.android;
 
     cv.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener({
